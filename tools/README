@@ -1,0 +1,13 @@
+Here is tools to collect data from target phones
+
+Firse goto EventLoggingServer and run complie to build
+Second update the SERVER_IP in LogUploader.java to your EventLoggingServer ip.
+
+Start EventLoggingServer by 
+cd bin
+java -jar Collector.jar
+
+Build the EventLogging apk and install to your instrumented phone.
+Run the app, start collecting data. 
+
+Yours raw logdata will inside a subfolder bin
