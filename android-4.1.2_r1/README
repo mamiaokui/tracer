@@ -13,7 +13,7 @@ Folder:
   Google android code
   tracer
   Kernel
-rename your $WORKING_DIRECTORY to google-4.1.2
+rename your $WORKING_DIRECTORY to google-4.1.2_r1
 rename your $Kernel to kernel
 
 2. Patching the code:
