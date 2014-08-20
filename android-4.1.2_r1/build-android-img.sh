@@ -14,6 +14,8 @@ cd $DIR
 
 # Build Android
 cd ../../google-4.1.2_r1
+export PATH=$HOME/bin/jdk1.6.0_45/bin:$PATH
+export JAVA_HOME=$HOME/bin/jdk1.6.0_45
 source build/envsetup.sh
 lunch full_maguro-userdebug 
 make -j5
