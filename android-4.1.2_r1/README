@@ -1,0 +1,35 @@
+Follow the steps below:
+
+1. Preparing build:
+Follow the https://source.android.com/source/initializing.html
+Checkout android source code on branch android-4.1.2_r1 in folder 
+which the tracer project stay in. As the below structure:
+
+Follow the https://source.android.com/source/building-kernels.html
+Checkout the kernel source code of toro,maguro (omap) in folder 
+which the tracer project stay in. As the below structure:
+
+Folder:
+  Google android code
+  tracer
+  Kernel
+rename your $WORKING_DIRECTORY to google-4.1.2
+rename your $Kernel to kernel
+
+2. Patching the code:
+run ./patch.sh 
+
+This will checkout the omap kernel to a special
+git commit and patch it and also patch the Google android code
+
+3. Building:
+run ./build-android-img.sh 
+
+This will 
+a. sudo apt-get install some necessary building env
+b. build kernel code and copy the kernel zImage to Google android code/device/samsung/tuna/kernel
+c. build android source code on maguro defconfig
+d. pack the android build into a zip image for downloading to device. (IMPORTANT: We are using Maguro!!!: GT-I9250)
+
+4. Downloading:
+   Burn this img into your GT-I9250 on your own tools.

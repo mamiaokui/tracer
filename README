@@ -1,0 +1,20 @@
+Here is the root of android tracer.
+
+We are creating a tool that trace the user perceived performance of 
+android app and android phone itself.
+
+We follow a simple way to indentify the user perceived performance
+(Might not be accurate), which caculate the time interval of a user 
+input event (Touch, Drag, Click...) to a first UI update event. 
+
+By inserting code into linux kernel, android framework, we could capture
+the time user start a input event and the time android phone start a
+ui update event.
+  Also we capture kernel events to understand what is happening inside 
+system.
+
+Please read the paper from panappticon on 
+wiki.yangqi.info/LinuxKernel
+
+Please follow us and contact me on sloanyang@gmail.com
+
