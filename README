@@ -19,4 +19,5 @@ wiki.yangqi.info/LinuxKernel
 Please follow us and contact me on sloanyang@gmail.com
 
 Environment
-We need oracle jdk 1.6.0_45 in your $HOME/bin/ 
+We need oracle jdk 1.6.0_45 in your $HOME/bin/
+We need you install perlbrew and perl-5.12.4 to build webcore correctly 
