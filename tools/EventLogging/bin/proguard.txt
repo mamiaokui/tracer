@@ -1,9 +1,0 @@
-# view AndroidManifest.xml #generated:19
--keep class com.example.eventlogging.EventLoggingActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:28
--keep class com.example.eventlogging.ServerService { <init>(...); }
-
-# view AndroidManifest.xml #generated:29
--keep class com.example.eventlogging.StartupReceiver { <init>(...); }
-
