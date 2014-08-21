@@ -3,7 +3,6 @@ package com.example.eventlogging;
 import java.nio.ByteBuffer;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.EventLogging;
 
 import android.content.Context;
 import android.util.Log;
@@ -82,8 +81,7 @@ public class BufferQueue {
 	}
 
 	public void export(int index){//Upload the current queue when Wifi available, otherwise write to file
-		EventLogging eventlogging = EventLogging.getInstance();
-		eventlogging.onPauseExport();
+		
 		LinkedBlockingQueue<UnitBuffer> target = mQueues[index];
 		UnitBuffer tmp = target.poll();
 		while(tmp!=null){

@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.ArrayDeque;
 import java.lang.Process;
-import java.util.EventLogging;
 
 import android.util.Log;
 
@@ -199,8 +198,7 @@ public class ConfigChange extends Thread{
 			SwitchToConfig(next_config);
 			
 		}
-		EventLogging eventlogging = EventLogging.getInstance();
-		eventlogging.addEvent(EventLogging.EVENT_SWITCH_CONFIG, next_config);
+		
 		return next_config;
 	}
 	public double fastReadStats(){

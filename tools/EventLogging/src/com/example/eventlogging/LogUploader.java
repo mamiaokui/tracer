@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.EventLogging;
+
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -117,23 +117,13 @@ public class LogUploader {
 		            } catch(InterruptedException e) {
 		         		//break;
 		         	}
-		    }
-		    if(success == 0){
-		    	Log.i(TAG,"Failed to send log, write to sdcard " + runID);
-		    	EventLogging eventlogging = EventLogging.getInstance();
-		    	eventlogging.addEvent(EventLogging.EVENT_WRITE_TRACE);    
-		    	mWriter.writeToFile(runID, mSource, mLen, mMode);
-		    	eventlogging.addEvent(EventLogging.EVENT_WRITE_DONE);
-		    }
-		    	
+		    }		    	
 		}	
 	}
 		
 	public boolean send(long runID, byte[] source, int len, int mode) {
 	    if (connectionAvailable() != CONNECTION_WIFI)
 		return false;
-	    EventLogging eventlogging = EventLogging.getInstance();
-	    eventlogging.addEvent(EventLogging.EVENT_UPLOAD_TRACE);
 	    Log.i(TAG, "Sending log data " + runID + " " + len + " "+ mode);
 	    Socket s = new Socket();
 	    try {
@@ -170,16 +160,13 @@ public class LogUploader {
 	    } catch(SocketTimeoutException e) {
 	      /* Connection trouble with server.  Try again later.
 	       */
-	      eventlogging.addEvent(EventLogging.EVENT_UPLOAD_DONE);
 	      return false;
 	    } catch(IOException e) {
 	    	Log.w(TAG, "Unexpected exception sending log.  Dropping log data");
 	    	e.printStackTrace();
-	    	eventlogging.addEvent(EventLogging.EVENT_UPLOAD_DONE);
 	    	return false;
 	    }
 	    Log.d(TAG, "Sending log data " + runID + " " + len + " "+ mode + " success");
-	    eventlogging.addEvent(EventLogging.EVENT_UPLOAD_DONE);
 	    return true;
 	  }
 
