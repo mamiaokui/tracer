@@ -3,8 +3,7 @@ DIR=$(pwd)
 
 # Patch Kernel
 cd ../../kernel
-git checkout origin/android-omap-tuna-3.0-jb-mr2
-git checkout 6a5fe817ac903697a9e996af18bc74f0d8e82ce9
+git checkout 4f6d3717060f171e5c1340386d509f6d0df9f2d6
 git apply ../tracer/android-4.1.2_r1/patches/kernel/kernel.diff
 cd $DIR
 
