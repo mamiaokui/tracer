@@ -6,8 +6,10 @@
 # Java class files
 *.class
 # Generated files
-bin/
-gen/
+tools/EventLogging/bin/
+tools/EventLogging/gen/
+tools/EventLogging/libs/
+tools/EventLogging/obj/
 # Gradle files
 .gradle/
 build/
