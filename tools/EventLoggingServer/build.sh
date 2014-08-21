@@ -1,4 +1,8 @@
 #rm *.jar
+if [ ! -d bin ]; then
+  mkdir bin;
+fi;
+
 
 #cd bin
 #jar cvfm test.jar ../MANIFEST_test test/*.class
