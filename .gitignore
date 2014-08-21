@@ -20,3 +20,5 @@ local.properties
 proguard/
 # Log Files
 *.log
+# Python Compile
+*.pyc
