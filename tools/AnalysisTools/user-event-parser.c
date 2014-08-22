@@ -98,9 +98,8 @@ void print_event_json(event cur, FILE* outstream)
 		case WRITE_DONE:
 		case MSG_POLL_NATIVE:
 		case MSG_POLL_DONE:
-			fprintf(outstream, "null");
 		default:
-			assert((event_type >=0) ||(event_type < 16));
+			fprintf(outstream, "null");
 	}	
 	fprintf(outstream, json_end);
 }
