@@ -13,14 +13,14 @@ typedef struct event{
 
 static char * event_types[16] = {
   "ENQUEUE_MSG",
-  "DELAY_MSG",
+  "MSG_ENQUEUE_DELAY",
   "DEQUEUE_MSG",
   "UI_UPDATE",
   "UI_INPUT",
   "ENTER_FOREGROUND",
   "EXIT_FOREGROUND",
-  "SUBMIT_ASYNCTASK",
-  "CONSUME_ASYNCTASK",
+  "SUBMIT_ASYNC",
+  "CONSUME_ASYNC",
   "UPLOAD_TRACE",
   "UPLOAD_DONE",
   "WRITE_TRACE",
@@ -52,7 +52,7 @@ void print_event_json(event cur, FILE* outstream)
 	long timestamp = cur.timestamp;
 	int event_type = cur.event_type;
 	int pid = cur.pid;
-	const char* json_start = "{\"event\":\"%s\",\"time\":{\"sec\":%d,\"usec\":%d},\"pid\":%d,\"data\":";
+	const char* json_start = "{\"event\":\"%s\",\"time\":{\"sec\":%d,\"usec\":%d},\"cpu\":9,\"pid\":%d,\"irq\":false,\"data\":";
 	const char* json_end = "}\n";
 	int sec = timestamp/1e6;
 	int usec = timestamp - sec*1e6;

@@ -76,6 +76,7 @@ class Global:
     Global.SaveThreadNameMap()
     Global.SaveWebViewThreadMap()
     subgraphs = nx.weakly_connected_component_subgraphs(Global.graph)
+    sg_rm = []
     for sg in subgraphs:
       any_event = sg.node[sg.nodes()[0]]['data']
       last_event_timestamp = any_event.timestamp
@@ -89,9 +90,12 @@ class Global:
           if string.find(str(n), 'UI_INPUT') >= 0:
             input_node = str(n)
       # Remove graphs that are at least 10 seconds old or have span > 30 seconds
-      if (timestamp - last_event_timestamp).total_seconds() > 30.0 or (last_event_timestamp - start_event_timestamp).total_seconds() > 300.0:
+      if (timestamp - last_event_timestamp).total_seconds() > 10.0 or (last_event_timestamp - start_event_timestamp).total_seconds() > 30.0:
         IO.WriteGraph(sg, Config.transaction_graphs_dir, input_node)
-        Global.graph.remove_nodes_from(sg.nodes())
+        sg_rm.append(sg)
+
+    for toberm in sg_rm:
+      Global.graph.remove_nodes_from(toberm.nodes())
 
   @staticmethod
   def Reset():

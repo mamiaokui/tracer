@@ -13,12 +13,13 @@ def ReorderAndHandleEvents(event_list):
     Global.UpdateThreadState(evt)
     # Event-specific handling
     event_handler_map[evt.event](evt)
+    del evt
   del reordered_lst
 
 def new_main():
   event_list = []
   current_time = None
-  for line in sys.stdin:
+  for line in open("../Splited/2014-08-21.json", "r"):
     event = Event.decode_event(line)
     if current_time != event.timestamp:
       ReorderAndHandleEvents(event_list)
@@ -26,10 +27,10 @@ def new_main():
       event_list = []
     event_list.append(event)
     current_time = event.timestamp
-    if Global.Graph().number_of_nodes() > 1000000:
-      Global.PrintMemoryUsage()
+    if Global.Graph().number_of_nodes() > 400000:
+#      Global.PrintMemoryUsage()
       Global.TryCleanupGraph(event.timestamp)
-      Global.PrintMemoryUsage()
+#      Global.PrintMemoryUsage()
       sys.stderr.flush()
       sys.stdout.flush()
 
@@ -37,7 +38,7 @@ def new_main():
   del event_list
 
 def old_main():
-  for line in sys.stdin:
+  for line in open("../Splited/2014-08-21.json", "r"):
     event = Event.decode_event(line)
      # Common handling
     Global.UpdateThreadState(event)

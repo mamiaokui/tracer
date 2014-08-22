@@ -1,6 +1,7 @@
 from EventHandlers import *
 
 event_handler_map = {
+    "(null)" : NullHandler,
     "SYNC_LOG" : NullHandler,
     "MISSED_COUNT" : NullHandler,
     "CPU_ONLINE" : NullHandler,

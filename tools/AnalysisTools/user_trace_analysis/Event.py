@@ -234,8 +234,8 @@ class UserspaceEvent(Event):
 class MessageQueueEvent(UserspaceEvent):
     def __init__(self, data):
         super(MessageQueueEvent, self).__init__(data)
-        self.message_id = self.data['mid']
-        self.queue_id = self.data['qid']
+        self.message_id = self.data['message_id']
+        self.queue_id = self.data['queue_id']
         
     def __str__(self):
         header = super(MessageQueueEvent, self).__str__()
@@ -244,7 +244,7 @@ class MessageQueueEvent(UserspaceEvent):
     
 class MessageQueueDelayEvent(UserspaceEvent):
     def __init__(self, data):
-        super(MessageEnqueueDelayEvent, self).__init__(data)
+        super(MessageQueueDelayEvent, self).__init__(data)
         self.delay = self.data['delay']
         
     def __str__(self):
@@ -282,6 +282,7 @@ import sys
 def decode_event(encoded):
     data = json.loads(encoded)
     return {
+        "(null)" : Event,
         "BOOT" : Event,
         "SYNC_LOG" : SyncLogEvent,
         "MISSED_COUNT" : MissedCountEvent,
