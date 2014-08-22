@@ -27,7 +27,7 @@ def new_main():
       event_list = []
     event_list.append(event)
     current_time = event.timestamp
-    if Global.Graph().number_of_nodes() > 400000:
+    if Global.Graph().number_of_nodes() > 300000:
 #      Global.PrintMemoryUsage()
       Global.TryCleanupGraph(event.timestamp)
 #      Global.PrintMemoryUsage()

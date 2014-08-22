@@ -10,8 +10,8 @@ def DebugString(graph):
   lst = []
   for n in graph:
     event = graph.node[n]['data']
-    event.thread_name = Global.ThreadName(event.pid, thread_name = event.thread_name)
-    event.node_id = str(n)
+    #event.thread_name = Global.ThreadName(event.pid, thread_name = event.thread_name)
+    #event.node_id = str(n)
     lst.append(event)
   lst.sort(key = lambda x: x.timestamp)
   return '\n'.join([str(e) for e in lst])

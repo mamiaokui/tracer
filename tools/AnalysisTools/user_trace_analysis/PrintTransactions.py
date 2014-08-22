@@ -45,6 +45,6 @@ if __name__== '__main__':
     print('Usage: python PrintTransaction.py <path to all transactions>')
     sys.exit(0)
   else:
-    #PrintTrans(sys.argv[1])
-    PrintCriticalPaths(sys.argv[1])
+    PrintTrans(sys.argv[1])
+    #PrintCriticalPaths(sys.argv[1])
       
