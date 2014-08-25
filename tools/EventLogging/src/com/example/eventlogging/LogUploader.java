@@ -35,7 +35,7 @@ public class LogUploader {
 	
 	public static final int UPLOAD_THRESHOLD = 3*1024*1024;//3M 
 	
-	private static final String SERVER_IP = "10.33.43.61"; 
+	private static final String SERVER_IP = "10.33.43.6"; 
 	private static final int SERVER_PORT = 5204;
 	
 	private ConnectivityManager connectivityManager;
