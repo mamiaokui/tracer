@@ -19,7 +19,7 @@ def ReorderAndHandleEvents(event_list):
 def new_main():
   event_list = []
   current_time = None
-  for line in open("../Splited/2014-08-21.json", "r"):
+  for line in sys.stdin:
     event = Event.decode_event(line)
     if current_time != event.timestamp:
       ReorderAndHandleEvents(event_list)
@@ -38,7 +38,7 @@ def new_main():
   del event_list
 
 def old_main():
-  for line in open("../Splited/2014-08-21.json", "r"):
+  for line in sys.stdin:
     event = Event.decode_event(line)
      # Common handling
     Global.UpdateThreadState(event)

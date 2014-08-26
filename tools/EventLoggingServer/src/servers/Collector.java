@@ -17,7 +17,6 @@ public class Collector extends BaseServer {
 	
 	public static void main(String[] argv){
 		while(true){
-			System.out.println("Collector server starts");
 			Collector server = new Collector();
 			server.listenSocket(Definition.PORT_REPORT);
 		}

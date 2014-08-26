@@ -45,7 +45,7 @@ public class CollectorWorker extends BaseWorker {
   }
 
 	public void run() {
-		System.out.println("<Thread " + getId() + "> Collector Thread starts");
+		System.out.println("<Thread " + getId() + "> B Thread_begins");
     File logFile = null;
     File logFileInf = null;
 		byte buffer[] = new byte[20480];
@@ -99,7 +99,7 @@ public class CollectorWorker extends BaseWorker {
         client.close();
         return;
       }
-      System.out.println("<Thread " + getId() + "> Created directory: " +
+      System.out.println("<Thread " + getId() + "> S " +
                          directory.toString());
 			
       long payloadLength;
@@ -114,8 +114,8 @@ public class CollectorWorker extends BaseWorker {
                          ".deflate");
       //logFileInf = new File(logFolder, "" + timestamp + ".enflate");
       if(logFile.createNewFile()) {
-        System.out.println("<Thread " + getId() + "> Writting log file: " +
-                           logFile.getName());
+        //System.out.println("<Thread " + getId() + "> Writting log file: " +
+        //                   logFile.getName());
         OutputStream fout = new BufferedOutputStream(new FileOutputStream(
                                 logFile));
         while(payloadLength > 0) {
@@ -133,7 +133,7 @@ public class CollectorWorker extends BaseWorker {
             (client.getRemoteSocketAddress() instanceof InetSocketAddress) ?
             (InetSocketAddress)client.getRemoteSocketAddress() : null;
             
-        System.out.println("<Thread " + getId() + "> Wrote log file: " +
+        System.out.println("<Thread " + getId() + "> D " +
                            logFile.getName());
 
         client.getOutputStream().write(0);
@@ -192,6 +192,6 @@ public class CollectorWorker extends BaseWorker {
 			}
 			e.printStackTrace();
 		}
-		System.out.println("<Thread " + getId() + "> Thread ends");
+		System.out.println("<Thread " + getId() + "> E Thread_ends");
 	}
 }
