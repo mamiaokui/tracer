@@ -5,6 +5,7 @@ import shutil
 from subprocess import PIPE, Popen
 from threading  import Thread
 import time
+import glob
 
 try:
     from Queue import Queue, Empty
@@ -66,6 +67,14 @@ def process_server():
 
                 #move the transactions.txt to webserver dir
                 shutil.move(os.getcwd()+"/../AnalysisTools/user_trace_analysis/transactions.txt", os.getcwd()+"/" + time.strftime("%Y%m%d-%H%M%S")+"-transactions.txt")
+                #merge all transactions.txt
+                read_files = glob.glob("*transactions.txt")
+                with open("tmp.txt", "wb") as outfile:
+                    for f in read_files:
+                        with open(f, "rb") as infile:
+                            outfile.write(infile.read())
+                shutil.move(os.getcwd()+"/tmp.txt", os.getcwd()+"/transactions.txt")
+
                 #clear current_dir
                 current_dir = "NULL"
 
