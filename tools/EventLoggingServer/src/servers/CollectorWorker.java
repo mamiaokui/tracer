@@ -71,7 +71,7 @@ public class CollectorWorker extends BaseWorker {
       for(int i = 0; i < headers.length; i++) {
         headers[i] = sanitize(headers[i]);
       //Lide added
-      System.out.println("Header is " + headers[i]); 
+      //System.out.println("Header is " + headers[i]); 
       }
       /* We will enforce that logs must be stored at least three folders deep.
          It would be annoying if buggy/adversarial clients tried to store logs
@@ -99,7 +99,7 @@ public class CollectorWorker extends BaseWorker {
         client.close();
         return;
       }
-      System.out.println("Thread <" + getId() + "> Created directory: " +
+      System.out.println("<Thread " + getId() + "> Created directory: " +
                          directory.toString());
 			
       long payloadLength;
@@ -114,7 +114,7 @@ public class CollectorWorker extends BaseWorker {
                          ".deflate");
       //logFileInf = new File(logFolder, "" + timestamp + ".enflate");
       if(logFile.createNewFile()) {
-        System.out.println("Thread <" + getId() + "> Writting log file: " +
+        System.out.println("<Thread " + getId() + "> Writting log file: " +
                            logFile.getName());
         OutputStream fout = new BufferedOutputStream(new FileOutputStream(
                                 logFile));
@@ -133,13 +133,13 @@ public class CollectorWorker extends BaseWorker {
             (client.getRemoteSocketAddress() instanceof InetSocketAddress) ?
             (InetSocketAddress)client.getRemoteSocketAddress() : null;
             
-        System.out.println("Thread <" + getId() + "> Wrote log file: " +
+        System.out.println("<Thread " + getId() + "> Wrote log file: " +
                            logFile.getName());
 
         client.getOutputStream().write(0);
         client.close();
 	// Lide commented out
-        /*System.out.println("Thread <" + getId() + "> Inflating log file: " +
+        /*System.out.println("<Thread " + getId() + "> Inflating log file: " +
                            logFile.getName());
         InflaterInputStream logIn = new InflaterInputStream(new FileInputStream(
                                                             logFile));
@@ -192,6 +192,6 @@ public class CollectorWorker extends BaseWorker {
 			}
 			e.printStackTrace();
 		}
-		System.out.println("<" + getId() + "> Thread ends");
+		System.out.println("<Thread " + getId() + "> Thread ends");
 	}
 }
